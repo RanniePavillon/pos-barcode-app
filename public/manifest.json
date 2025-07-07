@@ -1,0 +1,35 @@
+{
+	"theme_color": "#003539",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"scope": ".",
+	"start_url": ".",
+	"name": "pofsis_pos",
+	"short_name": "pos",
+	"icons": [
+		{
+			"src": "/icons/icon-152x152.png",
+			"sizes": "152x152",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-284x284.png",
+			"sizes": "284x284",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"screenshots": [
+		{"src": "/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png"}
+	],
+	"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt doloribus fugiat officia magni optio ea iure atque a voluptatem, labore nemo asperiores quidem aspernatur omnis, deleniti enim maxime nostrum laboriosam."
+}
