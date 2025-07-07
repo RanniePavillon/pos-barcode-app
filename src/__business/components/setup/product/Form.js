@@ -4,8 +4,8 @@ import { LeftArrowTCIcons } from "../../../../core/global/Icons"
 import { useHistory } from "react-router-dom"
 import { CstmTextField } from "../../../../core/global/forms/CstmTextField"
 import { TxtNumber } from "../../../../core/global/Format"
-// import { BarcodeGenerator } from "./BarcodeGenerator"
-import { QRCodeGenerator } from "./QRCodeGenerator"
+import { BarcodeGenerator } from "./BarcodeGenerator"
+// import { QRCodeGenerator } from "./QRCodeGenerator"
 
 export const Form = ({pdata, pLoader}) => {
     const nav = useHistory()
@@ -28,7 +28,6 @@ export const Form = ({pdata, pLoader}) => {
     }
 
     const submitHandler = (e) => {
-        console.log()
         if (pForm.name === '' || pForm.qty === '' || pForm.price === '') {
             alert('All fields are required!')
         }else{
@@ -67,8 +66,8 @@ export const Form = ({pdata, pLoader}) => {
                         </Grid>
                     </Grid>
                 </Box>
-                {/* <BarcodeGenerator pForm={pForm}/> */}
-                <QRCodeGenerator pForm={pForm}/>
+                <BarcodeGenerator pForm={pForm}/>
+                {/* <QRCodeGenerator pForm={pForm}/> */}
             </Box>
         </Box>
     )
