@@ -3,11 +3,10 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - npm install --legacy-peer-deps
+      - npm install
   build:
     commands:
       - npm cache clean --force  
-      - npm run generate-env
       - npm run build
 
 artifacts:
