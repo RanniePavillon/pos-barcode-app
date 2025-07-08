@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Html5QrcodeScanner } from "html5-qrcode"
-import { Box } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import useSound from 'use-sound';
 import clickNoise from '../../../assets/mp3/barcode_scanner_beep.wav'
 // import clickNoise from '../../../assets/mp3/click-noise.mp3'
@@ -9,11 +9,12 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
     const [play] = useSound(clickNoise);
     const [scan, setScan] = useState(false);
 
-    // const resumeHandler = () => {
-    //     setScan(false)
-    // }
+    const resumeHandler = () => {
+        setScan(false)
+    }
 
     const QRScanner = async () => {
+        console.log('erer')
         let crt = [...cart.data]
         const scanner = new Html5QrcodeScanner('reader', {
             qrbox:{
@@ -30,10 +31,13 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
 
         function success(result){
             console.log(result)
-            let ids = result.slice(7);
-            let fdata = pdata.data.filter(v => v.id === parseInt(ids))
+            // let ids = result.slice(7);
+            // console.log(ids)
+            // console.log(pdata.data)
+            // let fdata = pdata.data.filter(v => v.id === parseInt(ids))
+            let fdata = pdata.data.filter(v => v.barcode === result)
             if (fdata.length > 0) {
-                crt  =  [...crt, {...fdata[0], id:cart.data.length + 1, pid:ids, total_price:fdata[0].price}]
+                crt  =  [...crt, {...fdata[0], id:cart.data.length + 1, pid:fdata[0].id, total_price:fdata[0].price}]
                 cart.set((data) => data = crt)
             }
             results.set((data) => data = fdata)
@@ -89,7 +93,7 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
         // eslint-disable-next-line
         // eslint-disable-next-line 
     }, [])
-    
+   
     return (
         <>
             {scan && (
@@ -98,11 +102,11 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
                 </Box>
             )}
             <Box sx={{height:'290px !important'}} id="reader"></Box>
-            {/* <Box width="100%" display="flex" justifyContent="center" mt={1}>
-                <IconButton onClick={resumeHandler} sx={{display:"flex", justifyContent:"center", alignItems:"center", gap:"0px", height:"64px !important", width:"100px", bgcolor:scan ?'#107038':'#FFFFFF', borderRadius:"4px", '&:hover':{ bgcolor: scan ?'#107038':'#FFFFFF' }}}>
+            <Box width="100%" display="flex" justifyContent="center" mt={1}>
+                <IconButton onClick={resumeHandler} sx={{display:"flex", justifyContent:"center", alignItems:"center", gap:"0px", height:"64px !important", width:"100%", bgcolor:scan ?'#107038':'#FFFFFF', borderRadius:"4px", '&:hover':{ bgcolor: scan ?'#107038':'#FFFFFF' }}}>
                     <Box color={scan ?'#FFFFFF':'#000000'} fontWeight={600} fontSize={14} lineHeight="16px" textAlign="center">{scan ? 'SCAN' : 'SCANNING...'}</Box>
                 </IconButton>
-            </Box> */}
+            </Box>
         </>
     );
 }

@@ -73,6 +73,7 @@ export const BarcodeScanner = ({ onDetected }) => {
         return () => {
             Quagga.offDetected(_onDetected);
         };
+        // eslint-disable-next-line
     }, [scan]);
     
     const _onDetected = (result) => {

@@ -24,7 +24,8 @@ export const Form = ({pdata, pLoader}) => {
 
     const changeHandler = (e) => {
         const {name, value} = e.target
-        setPForm({...pForm, [name]:value, barcode:`0000000${pdata.data.length + 1}`})
+        // setPForm({...pForm, [name]:value, barcode:`0000000${pdata.data.length + 1}`})
+        setPForm({...pForm, [name]:value})
     }
 
     const submitHandler = (e) => {
@@ -62,6 +63,10 @@ export const Form = ({pdata, pLoader}) => {
                         </Grid>
                         <Grid item xs={12}>
                             <CstmTextField onChange={(e)=>changeHandler(e)} autoComplete='off' size="small" onPaste={(e)=>{ e.preventDefault() }} onKeyPress={(e)=>TxtNumber(e)} inputProps= {{ maxLength: 10 }} fullWidth variant="outlined" label="Price" name="price" value={pForm.price}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <CstmTextField onChange={(e)=>changeHandler(e)} autoComplete='off' size="small" onPaste={(e)=>{ e.preventDefault() }} onKeyPress={(e)=>TxtNumber(e)} inputProps= {{ maxLength: 20 }} fullWidth variant="outlined" label="Barcode" name="barcode" value={pForm.barcode}
                             />
                         </Grid>
                     </Grid>

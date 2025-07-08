@@ -4,6 +4,7 @@ import { Box, Container, IconButton } from '@mui/material';
 import { ToolContext } from '../../../core/context/ToolContext';
 import { Scanner } from './Scanner';
 import { useEffect } from 'react';
+import moment from "moment";
 
 export const Orders = () => {
     const { product_state, order_state } = useContext(ToolContext)
@@ -41,12 +42,12 @@ export const Orders = () => {
         .catch((error) => {
             console.log('Camera access denied:', error);
         });
-         // eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
-    
+
     return (
         <Box width="100%" height="100%">
-            <Box sx={{height:'290px !important'}}>
+            <Box sx={{height:'360px !important'}}>
                 <Scanner cameraAllowed={cameraAllowed} pdata={pdata} cart={cart} results={results}/>
                 {/* <BarcodeScanner onDetected={_onDetected} /> */}
             </Box>
@@ -55,10 +56,12 @@ export const Orders = () => {
                     {results.data.length > 0 ?
                         results.data?.map((v,k) => (
                             <Box key={k} width="100%" display="flex" flexDirection="column" gap="8px" fontSize={12}>
-                                <Box fontSize={14} fontWeight={600}>Scanned Details</Box>
+                                <Box fontSize={14} fontWeight={600}>Last Scanned Details</Box>
                                 <Box><b>Name: </b>{v.name}</Box>
                                 <Box><b>Qty: </b>{v.qty}</Box>
                                 <Box><b>Price: </b>{v.price}</Box>
+                                <Box><b>Barcode: </b>{v.barcode}</Box>
+                                <Box><b>Date & Time: </b>{moment().format('MM-DD-YYYY hh:mm:ss a')}</Box>
                             </Box>
                         ))
                     :
