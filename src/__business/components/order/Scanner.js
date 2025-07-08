@@ -14,7 +14,6 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
     // }
 
     const QRScanner = async () => {
-        console.log('erer')
         let crt = [...cart.data]
         const scanner = new Html5QrcodeScanner('reader', {
             qrbox:{

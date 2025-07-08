@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { Box, Container, IconButton } from '@mui/material';
 // import { BarcodeScanner } from './BarcodeScanner';
 import { ToolContext } from '../../../core/context/ToolContext';
 import { Scanner } from './Scanner';
 import { useEffect } from 'react';
 import moment from "moment";
+import { TransactionHistory } from './TransactionHistory';
 
 export const Orders = () => {
     const { product_state, order_state } = useContext(ToolContext)
@@ -45,10 +46,23 @@ export const Orders = () => {
         // eslint-disable-next-line
     }, []);
 
+
+     const [transactionHistory, setTransactionHistory] = useState({open:false})
+     const [transactionData, setTransactionData] = useState({isloading:false, transaction:[], items:[]})
+
+     const handleClick = useCallback(async() => {
+        setTransactionData((prev) => ({...prev, isloading:true}))
+        setTransactionHistory((prev) => ({...prev, open:true}))
+        setTimeout(() => {
+            setTransactionData((prev) => ({...prev, isloading:false, items:cart.data}))
+        }, 1000);
+        // eslint-disable-next-line
+    },[cart.data])
+    
     return (
         <Box width="100%" height="100%" display="flex" flexDirection="column" gap={1}>
             {/* <Box sx={{height:'100% !important'}}> */}
-            <Box sx={{height:'100%'}} >
+            <Box sx={{height:'100% !important'}} >
                 <Scanner cameraAllowed={cameraAllowed} pdata={pdata} cart={cart} results={results}/>
                 {/* <BarcodeScanner onDetected={_onDetected} /> */}
             </Box>
@@ -72,8 +86,10 @@ export const Orders = () => {
                     }
                 </Box>
             </Container>
-            <Box minHeight="130px" bgcolor="red"> </Box>
-            <Box width="100%" position="absolute" bottom={120}>
+            <Box minHeight="130px" bgcolor="red">
+                <TransactionHistory total={total} transactionData={transactionData} transactionHistory={transactionHistory} setTransactionHistory={setTransactionHistory}/>
+            </Box>
+            <Box width="100%" position="absolute" bottom={120} onClick={handleClick}>
                 <IconButton sx={{px:'16px', display:"flex", justifyContent:"space-between", alignItems:"center", gap:"8px", height:"64px !important", width:"100%", bgcolor:'#107038', borderRadius:"4px", '&:hover':{ bgcolor:'#107038'}}}>
                     <Box display="flex" alignItems="center" gap="8px">
                         <Box color={'#FFFFFF'} fontWeight={700} fontSize={16} lineHeight="16px" textAlign="center">{cart.data.length}</Box>
