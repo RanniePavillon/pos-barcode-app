@@ -55,7 +55,7 @@ const Validate = () => {
                 <Logo size={60}/>
             </Box>
             <Box component={motion.div} animate={{ x: [-80, 0], opacity: [0, 1]}} transition={{ duration: 0.8, delay: 0.8 }} ml={1} zIndex={1}>
-                <Box  fontSize={24} >POF<strong>Your Tool</strong></Box>
+                <Box  fontSize={24} >POF<strong>POS</strong></Box>
                 <Box fontSize={12}>
                     Powered by: POFSIS
                 </Box>
@@ -70,7 +70,7 @@ const Validate = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <Box>
-                            <Box  fontSize={14} >POF<strong>Your Tool</strong></Box>
+                            <Box  fontSize={14} >POF<strong>POS</strong></Box>
                             <Box fontSize={24}><b>SHEEESSHH!</b></Box> 
                             {/* <Box fontSize={18} mb={3}>Looks like an expolosion...</Box> */}
                             <Box fontSize={18} mb={3}>Well, this is unexpected. . .</Box>

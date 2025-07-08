@@ -56,7 +56,7 @@ export const InstallPromotion = ({ install_state }) => {
                             <HeaderLogo/>
                             <Box fontSize={18} mb={1}><b>Before you proceed!</b></Box>
                             <Box textAlign="left" fontSize={14} mb={4}>
-                                Let's make your extraordinary journey in POFSIS easier by installing POFYour Tool in your device.
+                                Let's make your extraordinary journey in POFSIS easier by installing POFPOS Tool in your device.
                             </Box>
                             <Installbtn install_state={install_state} logoutHandler={logoutHandler} installHandler={installHandler}/>
                         </Box>
@@ -68,7 +68,7 @@ export const InstallPromotion = ({ install_state }) => {
                         <HeaderLogo/>
                         <Box textAlign="center" fontSize={18} my={1}><b>Before you proceed!</b></Box>
                         <Box textAlign="center" fontSize={14}>
-                            Let's make your extraordinary journey in POFSIS easier by installing POFYour Tool in your device.
+                            Let's make your extraordinary journey in POFSIS easier by installing POFPOS Tool in your device.
                         </Box>
                         <Box my={install_state.ip.data.prompt_type === 'logout' ? 1 : 2} borderRadius={4} bgcolor="secondary.light" width="100%" height="100px" className={classes.bg1}/>
                         <Installbtn install_state={install_state} logoutHandler={logoutHandler} installHandler={installHandler}/>
@@ -86,7 +86,7 @@ const HeaderLogo = () => {
                 <Logo size={view === '' ? 60 : 40}/>
             </Box>
             <Box animate={{ x: [-80, 0], opacity: [0, 1]}} transition={{ duration: 0.8, delay: 0.8 }} ml={1} zIndex={1}>
-                <Box  fontSize={view === '' ? 19 : 14} >POF<strong>Your Tool</strong></Box>
+                <Box  fontSize={view === '' ? 19 : 14} >POF<strong>POS</strong></Box>
                 <Box fontSize={12}>
                     Powered by: POFSIS
                 </Box>

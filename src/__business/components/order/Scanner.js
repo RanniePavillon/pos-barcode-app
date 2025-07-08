@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Html5QrcodeScanner } from "html5-qrcode"
-import { Box, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import useSound from 'use-sound';
 import clickNoise from '../../../assets/mp3/barcode_scanner_beep.wav'
 // import clickNoise from '../../../assets/mp3/click-noise.mp3'
@@ -9,9 +9,9 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
     const [play] = useSound(clickNoise);
     const [scan, setScan] = useState(false);
 
-    const resumeHandler = () => {
-        setScan(false)
-    }
+    // const resumeHandler = () => {
+    //     setScan(false)
+    // }
 
     const QRScanner = async () => {
         console.log('erer')
@@ -106,11 +106,11 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
                 </Box>
             )}
             <Box sx={{height:'290px !important'}} id="reader"></Box>
-            <Box width="100%" display="flex" justifyContent="center" mt={1}>
+            {/* <Box width="100%" display="flex" justifyContent="center" mt={1}>
                 <IconButton onClick={resumeHandler} sx={{display:"flex", justifyContent:"center", alignItems:"center", gap:"0px", height:"64px !important", width:"100%", bgcolor:scan ?'#107038':'#FFFFFF', borderRadius:"4px", '&:hover':{ bgcolor: scan ?'#107038':'#FFFFFF' }}}>
                     <Box color={scan ?'#FFFFFF':'#000000'} fontWeight={600} fontSize={14} lineHeight="16px" textAlign="center">{scan ? 'SCAN' : 'SCANNING...'}</Box>
                 </IconButton>
-            </Box>
+            </Box> */}
         </>
     );
 }

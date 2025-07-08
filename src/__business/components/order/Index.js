@@ -48,7 +48,7 @@ export const Orders = () => {
     return (
         <Box width="100%" height="100%" display="flex" flexDirection="column" gap={1}>
             {/* <Box sx={{height:'100% !important'}}> */}
-            <Box height="100%" >
+            <Box sx={{height:'100%'}} >
                 <Scanner cameraAllowed={cameraAllowed} pdata={pdata} cart={cart} results={results}/>
                 {/* <BarcodeScanner onDetected={_onDetected} /> */}
             </Box>
