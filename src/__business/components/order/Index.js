@@ -46,12 +46,13 @@ export const Orders = () => {
     }, []);
 
     return (
-        <Box width="100%" height="100%">
-            <Box sx={{height:'360px !important'}}>
+        <Box width="100%" height="100%" display="flex" flexDirection="column" gap={1}>
+            {/* <Box sx={{height:'100% !important'}}> */}
+            <Box height="100%" >
                 <Scanner cameraAllowed={cameraAllowed} pdata={pdata} cart={cart} results={results}/>
                 {/* <BarcodeScanner onDetected={_onDetected} /> */}
             </Box>
-            <Container sx={{mt:2}}>
+            <Container sx={{minHeight:'245px'}}>
                 <Box width="100%" bgcolor="#FFFFFF" borderRadius="6px" p={2}>
                     {results.data.length > 0 ?
                         results.data?.map((v,k) => (
@@ -71,6 +72,7 @@ export const Orders = () => {
                     }
                 </Box>
             </Container>
+            <Box minHeight="130px" bgcolor="red"> </Box>
             <Box width="100%" position="absolute" bottom={120}>
                 <IconButton sx={{px:'16px', display:"flex", justifyContent:"space-between", alignItems:"center", gap:"8px", height:"64px !important", width:"100%", bgcolor:'#107038', borderRadius:"4px", '&:hover':{ bgcolor:'#107038'}}}>
                     <Box display="flex" alignItems="center" gap="8px">

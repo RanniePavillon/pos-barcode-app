@@ -21,9 +21,13 @@ export const Scanner = ({cameraAllowed, pdata, cart, results }) => {
                 width:200,
                 height:180,
             },
-            fps:0,
+            fps:10,
+            aspectRatio: 1.0,
+            supportedScanTypes: [Html5QrcodeScanner.SCAN_TYPE_CAMERA],
             videoConstraints:{
-                facingMode:'environment'
+                facingMode:'environment',
+                width: { ideal: 640 },     // or '100%' if wrapped in CSS
+                height: { ideal: 480 }
             },
             experimentalFeatures: { useBarCodeDetectorIfSupported: true },
         })

@@ -64,7 +64,7 @@ export const Core = () => {
 			}, 1000);
 		}
 		
-		console.log(`POS Business Version V1.1.6 is running`);
+		console.log(`POS Business Version V1.1.7 is running`);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
